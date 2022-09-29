@@ -5,8 +5,8 @@
  * @format
  * @flow strict-local
  */
- import {AppRegistry} from 'react-native';
- import {name as appName} from '../app.json';
+import {AppRegistry} from 'react-native';
+import {name as appName} from '../app.json';
 
 import React from 'react';
 import type {Node} from 'react';
@@ -27,7 +27,6 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -116,6 +115,5 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
-
 
 AppRegistry.registerComponent(appName, () => App);
