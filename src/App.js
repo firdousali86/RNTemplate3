@@ -19,7 +19,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
+import {Provider} from 'react-redux';
+import {store} from './store';
 import {
   Colors,
   DebugInstructions,
@@ -40,10 +41,12 @@ const Stack = createNativeStackNavigator();
 const App: () => Node = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
+      <Provider store={store}>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Details" component={DetailsScreen} />
+        </Stack.Navigator>
+      </Provider>
     </NavigationContainer>
   );
 };
