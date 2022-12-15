@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
-import cartReducer from '../reducers/cartSlice';
-import modalReducer from '../reducers/modalSlice';
+import cartReducer from '../features/cartSlice';
+import modalReducer from '../features/modalSlice';
 
 export const store = configureStore({
   reducer: {
