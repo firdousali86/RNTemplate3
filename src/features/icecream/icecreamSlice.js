@@ -13,6 +13,11 @@ const icecreamSlice = createSlice({
       state.numOfIcecreams += action.payload;
     },
   },
+  extraReducers: {
+    ['cake/ordered']: state => {
+      state.numOfIcecreams--;
+    },
+  },
 });
 
 export const icecreamActions = icecreamSlice.actions;
