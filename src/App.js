@@ -8,7 +8,7 @@
 import {AppRegistry} from 'react-native';
 import {name as appName} from '../app.json';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -32,13 +32,30 @@ import {ActivityLoader} from './components';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen, DetailsScreen} from './containers';
-
+import {ordered, restocked} from './features/cake/cakeSlice';
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
 
 const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
+  useEffect(() => {
+    console.log('Initial state: ', store.getState());
+
+    const unsubscribe = store.subscribe(() => {
+      console.log('Updated state: ', store.getState());
+    });
+
+    store.dispatch(ordered());
+    store.dispatch(ordered());
+    store.dispatch(ordered());
+    store.dispatch(restocked(3));
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <NavigationContainer>
       <Provider store={store}>
