@@ -34,8 +34,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen, DetailsScreen} from './containers';
 import {cakeActions} from './features/cake/cakeSlice';
 import {icecreamActions} from './features/icecream/icecreamSlice';
+
+import persistStore from 'redux-persist/es/persistStore';
+import {PersistGate} from 'redux-persist/integration/react';
+
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
+
+let persistor = persistStore(store);
 
 const Stack = createNativeStackNavigator();
 
@@ -64,10 +70,12 @@ const App: () => Node = () => {
   return (
     <NavigationContainer>
       <Provider store={store}>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Details" component={DetailsScreen} />
-        </Stack.Navigator>
+        <PersistGate persistor={persistor}>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Details" component={DetailsScreen} />
+          </Stack.Navigator>
+        </PersistGate>
       </Provider>
     </NavigationContainer>
   );
