@@ -7,6 +7,7 @@ import icecreamReducer from '../features/icecream/icecreamSlice';
 import {combineReducers} from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
+import persistStore from 'redux-persist/lib/persistStore';
 
 const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 
@@ -28,7 +29,14 @@ const logger = createLogger({
   diff: true,
 });
 
-export const store = configureStore({
+let store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
 });
+
+let persistor = persistStore(store);
+
+export default {
+  store,
+  persistor,
+};
