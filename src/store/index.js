@@ -1,25 +1,18 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {createLogger} from 'redux-logger';
-import cartReducer from '../features/cart/cartSlice';
-import modalReducer from '../features/modal/modalSlice';
-import cakeReducer from '../features/cake/cakeSlice';
-import icecreamReducer from '../features/icecream/icecreamSlice';
+
 import {combineReducers} from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
 import persistStore from 'redux-persist/lib/persistStore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import reducers from '../features/reducers';
 
 const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 
 let persistConfig = {key: 'root', storage: AsyncStorage};
 
-let rootReducer = combineReducers({
-  cart: cartReducer,
-  modal: modalReducer,
-  cake: cakeReducer,
-  icecream: icecreamReducer,
-});
+let rootReducer = combineReducers(reducers);
 
 let persistedReducer = persistReducer(persistConfig, rootReducer);
 
