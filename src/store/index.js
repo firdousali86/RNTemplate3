@@ -8,10 +8,11 @@ import {combineReducers} from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
 import persistStore from 'redux-persist/lib/persistStore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 
-let persistConfig = {key: 'root', storage};
+let persistConfig = {key: 'root', storage: AsyncStorage};
 
 let rootReducer = combineReducers({
   cart: cartReducer,
@@ -29,14 +30,9 @@ const logger = createLogger({
   diff: true,
 });
 
-let store = configureStore({
+export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
 });
 
-let persistor = persistStore(store);
-
-export default {
-  store,
-  persistor,
-};
+export const persistor = persistStore(store);
