@@ -8,22 +8,19 @@
 import {AppRegistry} from 'react-native';
 import {name as appName} from '../app.json';
 
+import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import type {Node} from 'react';
 import {StyleSheet} from 'react-native';
 import {Provider} from 'react-redux';
 import {store, persistor} from './store';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen, DetailsScreen} from './containers';
-
 import {PersistGate} from 'redux-persist/integration/react';
+
+import Navigation from './navigate';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
-
-const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,10 +53,7 @@ const App: () => Node = () => {
     <NavigationContainer>
       <Provider store={store}>
         <PersistGate persistor={persistor} onBeforeLift={onBeforeLift}>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Details" component={DetailsScreen} />
-          </Stack.Navigator>
+          <Navigation />
         </PersistGate>
       </Provider>
     </NavigationContainer>
