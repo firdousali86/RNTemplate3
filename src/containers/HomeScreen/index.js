@@ -8,6 +8,7 @@ import styles from './styles';
 import {cakeActions} from '../../features/cake/cakeSlice';
 import {icecreamActions} from '../../features/icecream/icecreamSlice';
 import {store} from '../../store';
+import {TestComponent} from '../../components';
 
 class Home extends Component {
   static propTypes = {
@@ -29,6 +30,7 @@ class Home extends Component {
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text style={{color: 'red'}}>Home Screen</Text>
         <Text style={{color: 'red'}}>{this.props.cake.numberOfCakes}</Text>
+        <TestComponent></TestComponent>
         <Button
           title="Go to Details"
           onPress={() => {
