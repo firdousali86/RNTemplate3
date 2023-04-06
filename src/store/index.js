@@ -7,6 +7,8 @@ import storage from 'redux-persist/lib/storage';
 import persistStore from 'redux-persist/lib/persistStore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import reducers from '../features/reducers';
+import sagas from '../sagas';
+import createSagaMiddleware from 'redux-saga';
 
 const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 
@@ -23,9 +25,14 @@ const logger = createLogger({
   diff: true,
 });
 
+const sagaMiddleware = createSagaMiddleware();
+
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(logger, sagaMiddleware),
 });
+
+sagaMiddleware.run(sagas);
 
 export const persistor = persistStore(store);

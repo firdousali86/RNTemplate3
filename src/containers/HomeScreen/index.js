@@ -2,13 +2,16 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Text, View, Button} from 'react-native';
+import {Text, View, Button, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import styles from './styles';
 import {cakeActions} from '../../features/cake/cakeSlice';
 import {icecreamActions} from '../../features/icecream/icecreamSlice';
 import {store} from '../../store';
 import {TestComponent} from '../../components';
+import {todosActions} from '../../features/todos/todosSlice';
+
+const {request: todoRequest} = todosActions;
 
 class Home extends Component {
   static propTypes = {
@@ -40,6 +43,15 @@ class Home extends Component {
             this.props.navigation.navigate('Details');
           }}
         />
+
+        <TouchableOpacity
+          onPress={() => {
+            this.props.todoRequest({
+              url: 'https://jsonplaceholder.typicode.com/todos',
+            });
+          }}>
+          <Text>test todos</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -49,6 +61,6 @@ const mapStateToProps = state => ({
   cake: state.cake,
 });
 
-const actions = {};
+const actions = {todoRequest};
 
 export default connect(mapStateToProps, actions)(Home);

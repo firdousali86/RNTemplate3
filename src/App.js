@@ -16,6 +16,7 @@ import {Provider} from 'react-redux';
 import {store, persistor} from './store';
 
 import {PersistGate} from 'redux-persist/integration/react';
+import {LogBox} from 'react-native';
 
 import Navigation from './navigate';
 
@@ -33,6 +34,8 @@ const App: () => Node = () => {
     // return () => {
     //   unsubscribe();
     // };
+
+    LogBox.ignoreAllLogs();
   }, []);
 
   useEffect(() => {
