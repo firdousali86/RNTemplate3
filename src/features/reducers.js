@@ -4,6 +4,7 @@ import cakeReducer from './cake/cakeSlice';
 import icecreamReducer from './icecream/icecreamSlice';
 import authSlice from './auth/authSlice';
 import todosSlice from './todos/todosSlice';
+import bookSlice from './book/bookSlice';
 
 export default {
   cart: cartReducer,
@@ -12,4 +13,5 @@ export default {
   icecream: icecreamReducer,
   auth: authSlice,
   todos: todosSlice,
+  book: bookSlice,
 };

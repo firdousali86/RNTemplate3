@@ -10,6 +10,7 @@ import {icecreamActions} from '../../features/icecream/icecreamSlice';
 import {store} from '../../store';
 import {TestComponent} from '../../components';
 import {todosActions} from '../../features/todos/todosSlice';
+import {bookActions} from '../../features/book/bookSlice';
 
 const {request: todoRequest} = todosActions;
 
@@ -51,6 +52,19 @@ class Home extends Component {
             });
           }}>
           <Text>test todos</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            store.dispatch(bookActions.bookOrdered());
+          }}>
+          <Text>Order Book</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            store.dispatch(bookActions.bookSold());
+          }}>
+          <Text>Sell Book</Text>
         </TouchableOpacity>
       </View>
     );
