@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen, DetailsScreen, LoginScreen} from '../containers';
+import {HomeScreen, DetailsScreen, LoginScreen, ExpMemo} from '../containers';
 import {useSelector} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
@@ -14,6 +14,7 @@ const Navigation = () => {
       <Stack.Group>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="expMemo" component={ExpMemo} />
       </Stack.Group>
     );
   };

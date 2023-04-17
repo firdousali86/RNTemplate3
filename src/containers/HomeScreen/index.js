@@ -66,6 +66,13 @@ class Home extends Component {
           }}>
           <Text>Sell Book</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate('expMemo');
+          }}>
+          <Text>Go to experiment memo</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -73,6 +80,7 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   cake: state.cake,
+  book: state.book,
 });
 
 const actions = {todoRequest};
