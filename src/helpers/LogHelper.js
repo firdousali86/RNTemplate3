@@ -1,5 +1,5 @@
 class LogHelper {
-  localServerLogging = (title, desc, data = {}) => {
+  localServerLogging = (title, desc = '', data = {}) => {
     fetch('https://testapi-383516.de.r.appspot.com/api/logs', {
       method: 'POST',
       headers: {

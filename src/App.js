@@ -17,6 +17,7 @@ import {store, persistor} from './store';
 
 import {PersistGate} from 'redux-persist/integration/react';
 import {LogBox} from 'react-native';
+import LogHelper from './helpers/LogHelper';
 
 import Navigation from './navigate';
 
@@ -34,6 +35,8 @@ const App: () => Node = () => {
     // return () => {
     //   unsubscribe();
     // };
+
+    // LogHelper.localServerLogging('test mount');
 
     LogBox.ignoreAllLogs();
   }, []);
