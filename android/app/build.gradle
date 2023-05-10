@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.rnapp"
+    namespace "com.rntemplate3"
     defaultConfig {
-        applicationId "com.rnapp"
+        applicationId "com.rntemplate3"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
