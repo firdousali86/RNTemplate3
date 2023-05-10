@@ -1,7 +1,13 @@
 import React, {useEffect, useState} from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen, DetailsScreen, LoginScreen, ExpMemo} from '../containers';
+import {
+  HomeScreen,
+  DetailsScreen,
+  LoginScreen,
+  ExpMemo,
+  NewHome,
+} from '../containers';
 import {useSelector} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
@@ -12,6 +18,7 @@ const Navigation = () => {
   getHomeStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="newHome" component={NewHome} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="expMemo" component={ExpMemo} />
