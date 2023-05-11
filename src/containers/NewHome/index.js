@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, TextInput, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {carActions} from '../../features/car/carSlice';
+import {authActions} from '../../features/auth/authSlice';
 
 const NewHome = () => {
   const dispatch = useDispatch();
@@ -12,58 +13,100 @@ const NewHome = () => {
 
   const car = useSelector(state => state.car);
 
-  return (
-    <View>
-      <Text>new home</Text>
+  const renderCarForm = () => {
+    return (
+      <>
+        <TextInput
+          value={carBrand}
+          onChangeText={changedText => {
+            setCarBrand(changedText);
+          }}
+          placeholder="Car Brand"
+        />
+        <TextInput
+          value={carName}
+          onChangeText={changedText => {
+            setCarName(changedText);
+          }}
+          placeholder="Car Name"
+        />
+        <TextInput
+          value={carModel}
+          onChangeText={changedText => {
+            setCarModel(changedText);
+          }}
+          placeholder="Car Model"
+        />
+        <TouchableOpacity
+          onPress={() => {
+            if (carBrand && carName && carModel) {
+              dispatch(
+                carActions.addNewCar({
+                  brand: carBrand,
+                  name: carName,
+                  model: carModel,
+                }),
+              );
 
-      <TextInput
-        value={carBrand}
-        onChangeText={changedText => {
-          setCarBrand(changedText);
-        }}
-        placeholder="Car Brand"
-      />
-      <TextInput
-        value={carName}
-        onChangeText={changedText => {
-          setCarName(changedText);
-        }}
-        placeholder="Car Name"
-      />
-      <TextInput
-        value={carModel}
-        onChangeText={changedText => {
-          setCarModel(changedText);
-        }}
-        placeholder="Car Model"
-      />
-      <TouchableOpacity
-        onPress={() => {
-          if (carBrand && carName && carModel) {
+              setCarBrand('');
+              setCarName('');
+              setCarModel('');
+            }
+          }}>
+          <Text>ADD</Text>
+        </TouchableOpacity>
+      </>
+    );
+  };
+
+  const renderListItem = ({item, index}) => {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginHorizontal: 10,
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            height: 80,
+            justifyContent: 'center',
+          }}>
+          <Text>{item.brand}</Text>
+          <Text>{item.name}</Text>
+          <Text>{item.model}</Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
             dispatch(
-              carActions.addNewCar({
-                brand: carBrand,
-                name: carName,
-                model: carModel,
+              carActions.deleteCar({
+                brand: item.brand,
+                name: item.name,
+                model: item.model,
               }),
             );
-          }
-        }}>
-        <Text>ADD</Text>
-      </TouchableOpacity>
+          }}>
+          <Text>Delete</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
-      <FlatList
-        data={car.carCollection}
-        renderItem={({item, index}) => {
-          return (
-            <View>
-              <Text>{item.brand}</Text>
-              <Text>{item.name}</Text>
-              <Text>{item.model}</Text>
-            </View>
-          );
-        }}
-      />
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      {renderCarForm()}
+      <View style={{flex: 1}}>
+        <FlatList data={car.carCollection} renderItem={renderListItem} />
+      </View>
+
+      <TouchableOpacity
+        style={{marginBottom: 50}}
+        onPress={() => {
+          dispatch(authActions.onLogout());
+        }}>
+        <Text>Logout</Text>
+      </TouchableOpacity>
     </View>
   );
 };
