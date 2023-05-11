@@ -39,13 +39,15 @@ const NewHome = () => {
       />
       <TouchableOpacity
         onPress={() => {
-          dispatch(
-            carActions.addNewCar({
-              brand: carBrand,
-              name: carName,
-              model: carModel,
-            }),
-          );
+          if (carBrand && carName && carModel) {
+            dispatch(
+              carActions.addNewCar({
+                brand: carBrand,
+                name: carName,
+                model: carModel,
+              }),
+            );
+          }
         }}>
         <Text>ADD</Text>
       </TouchableOpacity>
