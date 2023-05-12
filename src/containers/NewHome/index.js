@@ -1,10 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity, TextInput, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {carActions} from '../../features/car/carSlice';
 import {authActions} from '../../features/auth/authSlice';
 
+import analytics from '@react-native-firebase/analytics';
+
 const NewHome = () => {
+  useEffect(() => {
+    analytics().logEvent('basket', {
+      id: 3745092,
+      item: 'mens grey t-shirt',
+      description: ['round neck', 'long sleeved'],
+      size: 'L',
+    });
+  }, []);
+
   const dispatch = useDispatch();
 
   const [carBrand, setCarBrand] = useState('');
