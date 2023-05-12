@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {View, TouchableOpacity, Text, FlatList} from 'react-native';
 import styles from './styles';
+import {cartActions} from '../../features/cart/cartSlice';
+import {useDispatch} from 'react-redux';
 
 const itemsArray = [
   {name: 'Macbook', details: 'Macbook pro with core i9', price: 2000},
@@ -30,6 +32,8 @@ const itemsArray = [
 ];
 
 const ItemList = () => {
+  const dispatch = useDispatch();
+
   return (
     <View>
       <FlatList
@@ -43,7 +47,10 @@ const ItemList = () => {
                 <Text>{item.price}</Text>
               </View>
               <View>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    dispatch(cartActions.addToCart(item));
+                  }}>
                   <Text>Purchase</Text>
                 </TouchableOpacity>
               </View>
