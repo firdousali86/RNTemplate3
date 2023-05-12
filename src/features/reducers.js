@@ -1,4 +1,3 @@
-import cartReducer from './cart/cartSlice';
 import modalReducer from './modal/modalSlice';
 import cakeReducer from './cake/cakeSlice';
 import icecreamReducer from './icecream/icecreamSlice';
@@ -8,7 +7,6 @@ import bookSlice from './book/bookSlice';
 import carSlice from './car/carSlice';
 
 export default {
-  cart: cartReducer,
   modal: modalReducer,
   cake: cakeReducer,
   icecream: icecreamReducer,
