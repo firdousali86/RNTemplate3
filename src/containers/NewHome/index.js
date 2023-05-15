@@ -3,8 +3,9 @@ import {View, Text, TouchableOpacity, TextInput, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {carActions} from '../../features/car/carSlice';
 import {authActions} from '../../features/auth/authSlice';
-
 import analytics from '@react-native-firebase/analytics';
+
+import PersistanceHelper from '../../helpers/PersistanceHelper';
 
 const NewHome = () => {
   useEffect(() => {
@@ -14,6 +15,38 @@ const NewHome = () => {
       description: ['round neck', 'long sleeved'],
       size: 'L',
     });
+
+    PersistanceHelper.setter(
+      'mycommonkey',
+      'this is to check both the modules at once running one by one on each platform',
+    );
+
+    setTimeout(() => {
+      PersistanceHelper.getter('mycommonkey', data => {
+        console.log(data);
+      });
+    }, 5000);
+
+    // Keychain.setInternetCredentials(
+    //   'org.reactjs.native.abcd',
+    //   'username',
+    //   'password',
+    // )
+    //   .then(() => {
+    //     console.log('success');
+
+    //     Keychain.getInternetCredentials('org.reactjs.native.abcd')
+    //       .then(credentials => {
+    //         console.log(credentials);
+    //         console.log('success');
+    //       })
+    //       .catch(error => {
+    //         console.log('failure');
+    //       });
+    //   })
+    //   .catch(() => {
+    //     console.log('failure');
+    //   });
   }, []);
 
   const dispatch = useDispatch();

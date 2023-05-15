@@ -35,6 +35,14 @@ export const cartActions = cartSlice.actions;
 
 export default cartSlice.reducer;
 
+// 2 iphones
+// unit price $1000    $2000
+
+// 3 microwave
+// unit price $700     $2100
+
+// Total amount $4100
+
 // 2 - iphones           = price
 // 1 - washing machine     = price
 // 3 - microwaves        = price

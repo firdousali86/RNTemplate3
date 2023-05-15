@@ -19,8 +19,9 @@ const Navigation = () => {
   getHomeStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name="itemList" component={ItemList} />
         <Stack.Screen name="newHome" component={NewHome} />
+        <Stack.Screen name="itemList" component={ItemList} />
+
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="expMemo" component={ExpMemo} />
