@@ -8,6 +8,7 @@ import {
   ExpMemo,
   NewHome,
   ItemList,
+  MyOwnEntity,
 } from '../containers';
 import {useSelector} from 'react-redux';
 
@@ -19,10 +20,12 @@ const Navigation = () => {
   getHomeStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="myOwnEntity" component={MyOwnEntity} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+
         <Stack.Screen name="newHome" component={NewHome} />
         <Stack.Screen name="itemList" component={ItemList} />
 
-        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="expMemo" component={ExpMemo} />
       </Stack.Group>

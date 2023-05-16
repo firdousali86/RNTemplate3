@@ -4,5 +4,14 @@ import LoginScreen from './LoginScreen';
 import ExpMemo from './ExpMemo';
 import NewHome from './NewHome';
 import ItemList from './ItemList';
+import MyOwnEntity from './MyOwnEntity';
 
-export {DetailsScreen, HomeScreen, LoginScreen, ExpMemo, NewHome, ItemList};
+export {
+  DetailsScreen,
+  HomeScreen,
+  LoginScreen,
+  ExpMemo,
+  NewHome,
+  ItemList,
+  MyOwnEntity,
+};

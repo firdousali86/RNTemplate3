@@ -6,6 +6,7 @@ import todosSlice from './todos/todosSlice';
 import bookSlice from './book/bookSlice';
 import carSlice from './car/carSlice';
 import cartSlice from './cart/cartSlice';
+import itemsSlice from './items/itemsSlice';
 
 export default {
   modal: modalReducer,
@@ -13,6 +14,7 @@ export default {
   icecream: icecreamReducer,
   auth: authSlice,
   todos: todosSlice,
+  items: itemsSlice,
   book: bookSlice,
   car: carSlice,
   cart: cartSlice,
