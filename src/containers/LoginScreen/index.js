@@ -3,7 +3,10 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import {View, TextInput, TouchableOpacity, Text} from 'react-native';
-import {authActions} from '../../features/auth/authSlice';
+// import {authActions} from '../../features/auth/authSlice';
+import {userActions} from '../../features/user/userSlice';
+
+const {request} = userActions;
 
 import styles from './styles';
 
@@ -23,6 +26,7 @@ const LoginScreen = () => {
         value={email}
         placeholder="Email/Username"
         keyboardType="email-address"
+        autoCapitalize="none"
       />
       <TextInput
         style={styles.input}
@@ -36,7 +40,16 @@ const LoginScreen = () => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          dispatch(authActions.onLogin({email: email}));
+          // dispatch(authActions.onLogin({email: email}));
+          dispatch(
+            request({
+              uri: 'https://testapi-383516.de.r.appspot.com/api/Users/login',
+              body: {
+                email,
+                password,
+              },
+            }),
+          );
         }}>
         <Text style={{color: 'white'}}>Login</Text>
       </TouchableOpacity>

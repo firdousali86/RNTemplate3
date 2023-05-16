@@ -7,12 +7,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     onLogin: (state, action) => {
-      state.email = action.email;
-      state.isLoggedIn = true;
+      // state.email = action.email;
+      // state.isLoggedIn = true;
     },
     onLogout: state => {
-      state.email = undefined;
-      state.isLoggedIn = false;
+      // state.email = undefined;
+      // state.isLoggedIn = false;
     },
   },
 });

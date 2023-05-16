@@ -10,17 +10,35 @@ import {
   ItemList,
   MyOwnEntity,
 } from '../containers';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {Button} from 'react-native';
+import {userActions} from '../features/user/userSlice';
 
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
-  const auth = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+
+  const user = useSelector(state => state.user);
+  const isUserLoggedIn = user?.data?.id ? true : false;
 
   getHomeStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name="myOwnEntity" component={MyOwnEntity} />
+        <Stack.Screen
+          name="myOwnEntity"
+          component={MyOwnEntity}
+          options={{
+            headerRight: () => (
+              <Button
+                onPress={() => {
+                  dispatch(userActions.onLogout());
+                }}
+                title={'Log out'}
+              />
+            ),
+          }}
+        />
         <Stack.Screen name="Home" component={HomeScreen} />
 
         <Stack.Screen name="newHome" component={NewHome} />
@@ -42,7 +60,7 @@ const Navigation = () => {
 
   return (
     <Stack.Navigator>
-      {auth.isLoggedIn ? getHomeStack() : getAuthStack()}
+      {isUserLoggedIn ? getHomeStack() : getAuthStack()}
     </Stack.Navigator>
   );
 };

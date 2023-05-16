@@ -7,6 +7,7 @@ import bookSlice from './book/bookSlice';
 import carSlice from './car/carSlice';
 import cartSlice from './cart/cartSlice';
 import itemsSlice from './items/itemsSlice';
+import userSlice from './user/userSlice';
 
 export default {
   modal: modalReducer,
@@ -18,4 +19,5 @@ export default {
   book: bookSlice,
   car: carSlice,
   cart: cartSlice,
+  user: userSlice,
 };
