@@ -21,10 +21,10 @@ const userSlice = createSlice({
       state.errorMessage = action.errorMessage;
     },
     onLogout: (state, action) => {
-      state = initialState;
+      state.data = {};
     },
     clear: state => {
-      state = initialState;
+      state.data = {};
     },
   },
 });
