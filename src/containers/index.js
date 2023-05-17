@@ -5,6 +5,7 @@ import ExpMemo from './ExpMemo';
 import NewHome from './NewHome';
 import ItemList from './ItemList';
 import MyOwnEntity from './MyOwnEntity';
+import SignupScreen from './SignupScreen';
 
 export {
   DetailsScreen,
@@ -14,4 +15,5 @@ export {
   NewHome,
   ItemList,
   MyOwnEntity,
+  SignupScreen,
 };

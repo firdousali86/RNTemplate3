@@ -9,6 +9,7 @@ import {
   NewHome,
   ItemList,
   MyOwnEntity,
+  SignupScreen,
 } from '../containers';
 import {useSelector, useDispatch} from 'react-redux';
 import {Button} from 'react-native';
@@ -20,7 +21,12 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.user);
-  const isUserLoggedIn = user?.data?.id ? true : false;
+  const isUserLoggedIn =
+    user?.data?.id &&
+    typeof user?.data?.id === 'string' &&
+    user?.data?.id.length > 20
+      ? true
+      : false;
 
   getHomeStack = () => {
     return (
@@ -54,6 +60,7 @@ const Navigation = () => {
     return (
       <Stack.Group>
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="signupScreen" component={SignupScreen} />
       </Stack.Group>
     );
   };

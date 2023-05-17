@@ -1,5 +1,5 @@
 import {take, put, call, fork} from 'redux-saga/effects';
-
+import {Alert} from 'react-native';
 import {userActions} from '../features/user/userSlice';
 
 const {request, success, failure} = userActions;
@@ -22,7 +22,15 @@ function* watchRequest() {
     try {
       let response = yield call(callPostRequest, payload.uri, payload.body);
 
-      yield put(success(response));
+      if (payload.apiType === 'login') {
+        //login
+        yield put(success(response));
+      } else {
+        //signup
+        Alert.alert('Success', 'Signup successful, please login to continue');
+
+        yield put(success({signupSuccessful: true}));
+      }
     } catch (err) {
       yield put(failure(err.message));
     }
