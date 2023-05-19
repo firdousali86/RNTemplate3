@@ -1,8 +1,14 @@
 // @flow
 import React, {useState, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
-import {View, TextInput, TouchableOpacity, Text} from 'react-native';
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  ActivityIndicator,
+} from 'react-native';
 // import {authActions} from '../../features/auth/authSlice';
 import {userActions} from '../../features/user/userSlice';
 
@@ -13,6 +19,8 @@ import styles from './styles';
 const LoginScreen = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const user = useSelector(state => state.user);
 
   const dispatch = useDispatch();
 
@@ -65,6 +73,11 @@ const LoginScreen = props => {
         }}>
         <Text>Signup</Text>
       </TouchableOpacity>
+      <ActivityIndicator
+        animating={user.isFetching}
+        hidesWhenStopped
+        size={'large'}
+      />
     </View>
   );
 };
