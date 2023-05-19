@@ -3,18 +3,11 @@ import {View, Text, TouchableOpacity, TextInput, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {carActions} from '../../features/car/carSlice';
 import {authActions} from '../../features/auth/authSlice';
-import analytics from '@react-native-firebase/analytics';
-
-import PersistanceHelper from '../../helpers/PersistanceHelper';
+import {PersistanceHelper, AnalyticsHelper} from '../../helpers';
 
 const NewHome = () => {
   useEffect(() => {
-    analytics().logEvent('basket', {
-      id: 3745092,
-      item: 'mens grey t-shirt',
-      description: ['round neck', 'long sleeved'],
-      size: 'L',
-    });
+    AnalyticsHelper.logTest();
 
     PersistanceHelper.setter(
       'mycommonkey',
