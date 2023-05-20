@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 // import {authActions} from '../../features/auth/authSlice';
 import {userActions} from '../../features/user/userSlice';
+import {AnalyticsHelper} from '../../helpers';
 
 const {request, clear} = userActions;
 
@@ -52,6 +53,8 @@ const LoginScreen = props => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
+          AnalyticsHelper.logEvent('login', {email});
+
           dispatch(
             request({
               apiType: 'login',
