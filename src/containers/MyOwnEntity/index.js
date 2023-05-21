@@ -10,6 +10,7 @@ import {
   checkLocationAccuracy,
 } from 'react-native-permissions';
 import Geolocation from 'react-native-geolocation-service';
+import MapView from 'react-native-maps';
 
 // const {request} = itemsActions;
 
@@ -96,8 +97,16 @@ const MyOwnEntity = () => {
   };
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Text>myownentity</Text>
+      <MapView
+        style={{flex: 1}}
+        region={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121,
+        }}></MapView>
     </View>
   );
 };
