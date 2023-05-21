@@ -67,7 +67,7 @@ const Navigation = () => {
 
   return (
     <Stack.Navigator>
-      {isUserLoggedIn ? getHomeStack() : getAuthStack()}
+      {!isUserLoggedIn ? getHomeStack() : getAuthStack()}
     </Stack.Navigator>
   );
 };
