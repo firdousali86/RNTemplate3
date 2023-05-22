@@ -10,7 +10,7 @@ import {
   checkLocationAccuracy,
 } from 'react-native-permissions';
 import Geolocation from 'react-native-geolocation-service';
-import MapView from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
 // const {request} = itemsActions;
 
@@ -100,6 +100,7 @@ const MyOwnEntity = () => {
     <View style={{flex: 1}}>
       <Text>myownentity</Text>
       <MapView
+        provider={PROVIDER_GOOGLE}
         style={{flex: 1}}
         region={{
           latitude: 37.78825,
