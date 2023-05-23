@@ -2,8 +2,8 @@ import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {View, FlatList, Text} from 'react-native';
 import {itemsActions} from '../../features/items/itemsSlice';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {LocationHelper} from '../../helpers';
+import {MapViewControl} from '../../controls';
 // const {request} = itemsActions;
 
 const MyOwnEntity = () => {
@@ -30,15 +30,7 @@ const MyOwnEntity = () => {
   return (
     <View style={{flex: 1}}>
       <Text>myownentity</Text>
-      <MapView
-        provider={PROVIDER_GOOGLE}
-        style={{flex: 1}}
-        region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
-        }}></MapView>
+      <MapViewControl />
     </View>
   );
 };
