@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {View, FlatList, Text} from 'react-native';
 import {itemsActions} from '../../features/items/itemsSlice';
@@ -7,6 +7,7 @@ import {MapViewControl} from '../../controls';
 // const {request} = itemsActions;
 
 const MyOwnEntity = () => {
+  const [locationObject, setLocationObject] = useState(undefined);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const MyOwnEntity = () => {
       () => {
         LocationHelper.fetchLocation(
           locationObject => {
-            console.log(locationObject);
+            setLocationObject(locationObject);
           },
           error => {},
         );
@@ -30,7 +31,7 @@ const MyOwnEntity = () => {
   return (
     <View style={{flex: 1}}>
       <Text>myownentity</Text>
-      <MapViewControl />
+      <MapViewControl location={locationObject} style={{flex: 1}} />
     </View>
   );
 };
