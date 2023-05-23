@@ -17,7 +17,7 @@ const MyOwnEntity = () => {
 
     LocationHelper.checkLocationPermission(
       () => {
-        LocationHelper.fetchLocation(
+        LocationHelper.trackUserLocation(
           locationObject => {
             setLocationObject(locationObject);
           },

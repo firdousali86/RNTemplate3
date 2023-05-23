@@ -39,6 +39,29 @@ class LocationHelper {
     );
   };
 
+  trackUserLocation = (success, failure) => {
+    Geolocation.watchPosition(
+      locationObject => {
+        if (success) {
+          success(locationObject);
+        }
+      },
+      error => {
+        if (failure) {
+          failure(error);
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        forceRequestLocation: true,
+        showLocationDialog: true,
+        distanceFilter: 5,
+        useSignificantChanges: true,
+        showsBackgroundLocationIndicator: true,
+      },
+    );
+  };
+
   checkLocationPermission = (successCallback, errorCallback) => {
     check(
       Platform.select({
