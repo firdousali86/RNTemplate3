@@ -1,6 +1,11 @@
 import React from 'react';
 import {View, Text, Alert} from 'react-native';
-import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import MapView, {
+  PROVIDER_GOOGLE,
+  Marker,
+  Callout,
+  CalloutSubview,
+} from 'react-native-maps';
 
 const markersArray = [
   {
@@ -35,7 +40,7 @@ const MapViewControl = props => {
       return (
         <Marker
           onPress={() => {
-            Alert.alert('onclicked', 'you clicked a map marker');
+            // Alert.alert('onclicked', 'you clicked a map marker');
           }}
           coordinate={{
             latitude: item.lat,
@@ -43,6 +48,11 @@ const MapViewControl = props => {
           }}
           centerOffset={{x: -18, y: -60}}
           anchor={{x: 0.69, y: 1}}>
+          <Callout style={{width: 200, height: 100}}>
+            <View>
+              <Text>This is a plain view</Text>
+            </View>
+          </Callout>
           <View
             style={{
               width: 40,

@@ -55,7 +55,7 @@ class LocationHelper {
         enableHighAccuracy: true,
         forceRequestLocation: true,
         showLocationDialog: true,
-        distanceFilter: 5,
+        distanceFilter: 0.5,
         useSignificantChanges: true,
         showsBackgroundLocationIndicator: true,
       },
