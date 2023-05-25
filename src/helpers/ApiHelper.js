@@ -1,4 +1,8 @@
-import {kApiUrlEndpoint} from '../config/WebServices';
+import {
+  kApiUrlEndpoint,
+  ERROR_NETWORK_NOT_AVAILABLE,
+  ERROR_WRONG_CREDENTIALS,
+} from '../config/WebServices';
 
 class ApiHelper {
   async post(url, data, headers) {
@@ -35,7 +39,11 @@ class ApiHelper {
 
   handlePromise = (resolve, reject, response) => {
     if (response.error) {
-      reject(response.error);
+      if (response.error.code === 'LOGIN_FAILED') {
+        reject(ERROR_WRONG_CREDENTIALS);
+      } else {
+        reject(response.error);
+      }
     } else {
       resolve(response);
     }

@@ -1,12 +1,13 @@
 import {take, put, call, fork} from 'redux-saga/effects';
 
 import {itemsActions} from '../features/items/itemsSlice';
+import {ApiHelper} from '../helpers';
 // import ErrorHelper from '../helpers/ErrorHelper';
 
 const {request, success, failure} = itemsActions;
 
 function callGetRequest(url, data, headers) {
-  return fetch(url, data).then(x => x.json());
+  return ApiHelper.get(url, data, headers);
 }
 
 function* watchRequest() {

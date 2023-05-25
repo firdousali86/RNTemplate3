@@ -27,6 +27,8 @@ function* watchRequest() {
       }
     } catch (err) {
       yield put(failure(err.message));
+
+      Alert.alert(err.title, err.message);
     }
   }
 }
