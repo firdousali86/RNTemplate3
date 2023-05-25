@@ -3,6 +3,7 @@ import {
   ERROR_NETWORK_NOT_AVAILABLE,
   ERROR_WRONG_CREDENTIALS,
 } from '../config/WebServices';
+import {fetch} from 'react-native-ssl-pinning';
 
 class ApiHelper {
   async post(url, data, headers) {
@@ -14,6 +15,9 @@ class ApiHelper {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         ...headers,
+      },
+      sslPinning: {
+        certs: ['certs/mynewcert'], // your certificates name (without extension), for example cert1.cer, cert2.cer
       },
       body: JSON.stringify(data),
     }).then(x => x.json());

@@ -32,6 +32,7 @@
     "react-native-screens": "^3.18.1",
     "react-native-shared-preferences": "^1.0.2",
     "react-native-spinkit": "^1.5.1",
+    "react-native-ssl-pinning": "^1.5.7",
     "react-native-user-defaults": "^0.1.5",
     "react-redux": "^8.0.5",
     "redux-logger": "^3.0.6",

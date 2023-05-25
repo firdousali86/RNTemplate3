@@ -48,11 +48,6 @@ const MapViewControl = props => {
           }}
           centerOffset={{x: -18, y: -60}}
           anchor={{x: 0.69, y: 1}}>
-          <Callout style={{width: 200, height: 100}}>
-            <View>
-              <Text>This is a plain view</Text>
-            </View>
-          </Callout>
           <View
             style={{
               width: 40,
