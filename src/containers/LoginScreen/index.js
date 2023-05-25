@@ -12,6 +12,7 @@ import {
 // import {authActions} from '../../features/auth/authSlice';
 import {userActions} from '../../features/user/userSlice';
 import {AnalyticsHelper} from '../../helpers';
+import {kApiLogin} from '../../config/WebServices';
 
 const {request, clear} = userActions;
 
@@ -58,7 +59,7 @@ const LoginScreen = props => {
           dispatch(
             request({
               apiType: 'login',
-              uri: 'https://testapi-383516.de.r.appspot.com/api/Users/login',
+              uri: kApiLogin,
               body: {
                 email,
                 password,

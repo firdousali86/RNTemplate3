@@ -7,15 +7,6 @@ const {request, success, failure} = userActions;
 
 function callPostRequest(url, data, headers) {
   return ApiHelper.post(url, data, headers);
-
-  // return fetch(url, {
-  //   method: 'POST',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify(data),
-  // }).then(x => x.json());
 }
 
 function* watchRequest() {
