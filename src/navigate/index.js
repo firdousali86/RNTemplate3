@@ -31,7 +31,6 @@ const Navigation = () => {
   getHomeStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen
           name="myOwnEntity"
           component={MyOwnEntity}
@@ -46,6 +45,7 @@ const Navigation = () => {
             ),
           }}
         />
+        <Stack.Screen name="Home" component={HomeScreen} />
 
         <Stack.Screen name="newHome" component={NewHome} />
         <Stack.Screen name="itemList" component={ItemList} />
@@ -67,7 +67,7 @@ const Navigation = () => {
 
   return (
     <Stack.Navigator>
-      {!isUserLoggedIn ? getHomeStack() : getAuthStack()}
+      {isUserLoggedIn ? getHomeStack() : getAuthStack()}
     </Stack.Navigator>
   );
 };

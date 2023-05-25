@@ -1,18 +1,21 @@
 import {take, put, call, fork} from 'redux-saga/effects';
 import {Alert} from 'react-native';
 import {userActions} from '../features/user/userSlice';
+import {ApiHelper} from '../helpers';
 
 const {request, success, failure} = userActions;
 
 function callPostRequest(url, data, headers) {
-  return fetch(url, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  }).then(x => x.json());
+  return ApiHelper.post(url, data, headers);
+
+  // return fetch(url, {
+  //   method: 'POST',
+  //   headers: {
+  //     Accept: 'application/json',
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(data),
+  // }).then(x => x.json());
 }
 
 function* watchRequest() {
