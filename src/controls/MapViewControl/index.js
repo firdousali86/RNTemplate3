@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, forwardRef, useImperativeHandle} from 'react';
 import {View, Text, Alert} from 'react-native';
 import MapView, {
   PROVIDER_GOOGLE,
@@ -34,7 +34,13 @@ const markersArray = [
   },
 ];
 
-const MapViewControl = props => {
+const MapViewControl = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    something: () => {
+      console.log('something is happening');
+    },
+  }));
+
   const renderMarkers = () => {
     return markersArray.map((item, index) => {
       return (
@@ -83,6 +89,6 @@ const MapViewControl = props => {
       </MapView>
     </View>
   );
-};
+});
 
 export default MapViewControl;

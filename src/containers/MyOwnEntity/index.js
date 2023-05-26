@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useRef} from 'react';
 import {useDispatch} from 'react-redux';
-import {View, FlatList, Text} from 'react-native';
+import {View, FlatList, Text, TouchableOpacity} from 'react-native';
 import {itemsActions} from '../../features/items/itemsSlice';
 import {LocationHelper} from '../../helpers';
 import {MapViewControl} from '../../controls';
@@ -9,6 +9,7 @@ import {MapViewControl} from '../../controls';
 const MyOwnEntity = () => {
   const [locationObject, setLocationObject] = useState(undefined);
   const dispatch = useDispatch();
+  const mapRef = useRef(null);
 
   useEffect(() => {
     // dispatch(
@@ -31,7 +32,18 @@ const MyOwnEntity = () => {
   return (
     <View style={{flex: 1}}>
       <Text>myownentity</Text>
-      <MapViewControl location={locationObject} style={{flex: 1}} />
+      <MapViewControl
+        ref={mapRef}
+        location={locationObject}
+        style={{flex: 1}}
+      />
+      <TouchableOpacity
+        style={{height: 44}}
+        onPress={() => {
+          mapRef.current.something();
+        }}>
+        <Text>test ref</Text>
+      </TouchableOpacity>
     </View>
   );
 };
