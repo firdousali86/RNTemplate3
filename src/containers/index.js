@@ -6,6 +6,7 @@ import NewHome from './NewHome';
 import ItemList from './ItemList';
 import MyOwnEntity from './MyOwnEntity';
 import SignupScreen from './SignupScreen';
+import TestUseRef from './TestUseRef';
 
 export {
   DetailsScreen,
@@ -16,4 +17,5 @@ export {
   ItemList,
   MyOwnEntity,
   SignupScreen,
+  TestUseRef,
 };
