@@ -35,9 +35,20 @@ const markersArray = [
 ];
 
 const MapViewControl = forwardRef((props, ref) => {
+  const mapControlRef = useRef(null);
+
   useImperativeHandle(ref, () => ({
     something: () => {
       console.log('something is happening');
+      mapControlRef.current.animateToRegion(
+        {
+          latitude: 0,
+          longitude: 0,
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121,
+        },
+        5000,
+      );
     },
   }));
 
@@ -73,10 +84,17 @@ const MapViewControl = forwardRef((props, ref) => {
   return (
     <View style={props.style}>
       <MapView
+        ref={mapControlRef}
         showsUserLocation
         showsMyLocationButton
         provider={PROVIDER_GOOGLE}
         style={{flex: 1}}
+        onRegionChange={e => {
+          console.log(e);
+        }}
+        onRegionChangeComplete={e => {
+          console.log(e);
+        }}
         region={{
           latitude: props?.location?.latitude ? props?.location?.latitude : 0,
           longitude: props?.location?.longitude

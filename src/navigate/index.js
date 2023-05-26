@@ -32,8 +32,6 @@ const Navigation = () => {
   getHomeStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name="testUseRef" component={TestUseRef} />
-        <Stack.Screen name="newHome" component={NewHome} />
         <Stack.Screen
           name="myOwnEntity"
           component={MyOwnEntity}
@@ -48,6 +46,9 @@ const Navigation = () => {
             ),
           }}
         />
+        <Stack.Screen name="testUseRef" component={TestUseRef} />
+        <Stack.Screen name="newHome" component={NewHome} />
+
         <Stack.Screen name="Home" component={HomeScreen} />
 
         <Stack.Screen name="itemList" component={ItemList} />
