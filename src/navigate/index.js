@@ -11,6 +11,7 @@ import {
   MyOwnEntity,
   SignupScreen,
   TestUseRef,
+  TestSaga,
 } from '../containers';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
@@ -54,6 +55,7 @@ const Navigation = () => {
   getHomeStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="testSaga" component={TestSaga} />
         <Stack.Screen
           name="myOwnEntity"
           component={MyOwnEntity}

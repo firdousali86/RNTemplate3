@@ -3,22 +3,24 @@ import {
   ERROR_NETWORK_NOT_AVAILABLE,
   ERROR_WRONG_CREDENTIALS,
 } from '../config/WebServices';
-import {fetch} from 'react-native-ssl-pinning';
+// import {fetch} from 'react-native-ssl-pinning';
 
 class ApiHelper {
   async post(url, data, headers) {
-    const completeEndpoint = kApiUrlEndpoint + url;
+    if (!url.includes('http')) {
+      const url = kApiUrlEndpoint + url;
+    }
 
-    const response = await fetch(completeEndpoint, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         ...headers,
       },
-      sslPinning: {
-        certs: ['certs/mynewcert'], // your certificates name (without extension), for example cert1.cer, cert2.cer
-      },
+      // sslPinning: {
+      //   certs: ['certs/mynewcert'], // your certificates name (without extension), for example cert1.cer, cert2.cer
+      // },
       body: JSON.stringify(data),
     }).then(x => x.json());
 
@@ -28,9 +30,11 @@ class ApiHelper {
   }
 
   async get(url, data, headers) {
-    const completeEndpoint = kApiUrlEndpoint + url;
+    if (!url.includes('http')) {
+      const url = kApiUrlEndpoint + url;
+    }
 
-    const response = await fetch(completeEndpoint, data).then(x => x.json());
+    const response = await fetch(url, data).then(x => x.json());
 
     return new Promise((resolve, reject) => {
       this.handlePromise(resolve, reject, response);

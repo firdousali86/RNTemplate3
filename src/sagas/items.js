@@ -2,7 +2,6 @@ import {take, put, call, fork} from 'redux-saga/effects';
 
 import {itemsActions} from '../features/items/itemsSlice';
 import {ApiHelper} from '../helpers';
-// import ErrorHelper from '../helpers/ErrorHelper';
 
 const {request, success, failure} = itemsActions;
 
