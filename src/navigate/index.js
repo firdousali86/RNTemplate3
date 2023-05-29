@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import {
   HomeScreen,
   DetailsScreen,
@@ -20,6 +21,7 @@ import {userActions} from '../features/user/userSlice';
 import {NotificationHelper} from '../helpers';
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const Navigation = () => {
   const dispatch = useDispatch();
@@ -92,11 +94,28 @@ const Navigation = () => {
     );
   };
 
-  return (
-    <Stack.Navigator>
-      {isUserLoggedIn ? getHomeStack() : getAuthStack()}
-    </Stack.Navigator>
-  );
+  MyDrawer = () => {
+    return (
+      <Drawer.Navigator initialRouteName="TestSaga">
+        <Drawer.Screen name="TestSaga" component={TestSaga} />
+        <Drawer.Screen name="TestUseRef" component={TestUseRef} />
+      </Drawer.Navigator>
+    );
+  };
+
+  return MyDrawer();
+
+  // return isUserLoggedIn ? (
+  //   MyDrawer()
+  // ) : (
+  //   <Stack.Navigator>{getAuthStack()}</Stack.Navigator>
+  // );
+
+  // return (
+  //   <Stack.Navigator>
+  //     {isUserLoggedIn ? MyDrawer() : getAuthStack()}
+  //   </Stack.Navigator>
+  // );
 };
 
 export default Navigation;
