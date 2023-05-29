@@ -49,6 +49,7 @@
     "@types/react": "^18.0.24",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.2.1",
+    "detox": "^20.9.1",
     "eslint": "^8.19.0",
     "flow-bin": "^0.206.0",
     "jest": "^29.5.0",
@@ -64,5 +65,16 @@
     "LocationAccuracy",
     "LocationAlways",
     "LocationWhenInUse"
-  ]
+  ],
+  "detox": {
+    "test-runner": "jest",
+    "configurations": {
+      "ios.release": {
+        "binaryPath": "./ios/build/Build/Products/Release-iphonesimulator/RNTemplate3.app",
+        "build": "xcodebuild -workspace ios/RNTemplate3.xcworkspace -configuration release -scheme RNTemplate3 -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone X"
+      }
+    }
+  }
 }

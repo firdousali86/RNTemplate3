@@ -62,7 +62,7 @@ const Navigation = () => {
   getAuthStack = () => {
     return (
       <Stack.Group>
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen testID="Login" name="Login" component={LoginScreen} />
         <Stack.Screen name="signupScreen" component={SignupScreen} />
       </Stack.Group>
     );

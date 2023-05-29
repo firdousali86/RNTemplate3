@@ -33,6 +33,7 @@ const LoginScreen = props => {
   return (
     <View style={styles.container}>
       <TextInput
+        testID="usernameInput"
         style={styles.input}
         onChangeText={text => {
           setEmail(text);
@@ -43,6 +44,7 @@ const LoginScreen = props => {
         autoCapitalize="none"
       />
       <TextInput
+        testID="passwordInput"
         style={styles.input}
         onChangeText={text => {
           setPassword(text);
@@ -52,6 +54,7 @@ const LoginScreen = props => {
         secureTextEntry
       />
       <TouchableOpacity
+        testID="loginButton"
         style={styles.button}
         onPress={() => {
           AnalyticsHelper.logEvent('login', {email});
