@@ -18,18 +18,35 @@ class NotificationHelper {
     });
   };
 
-  initializeFCM = () => {
+  initializeFCM = (onRecieve, onTap) => {
     this.messageListener = messaging().onMessage(async remoteMessage => {
       console.log(remoteMessage);
+
+      if (onRecieve) {
+        onRecieve(remoteMessage);
+      }
     });
 
     messaging().onNotificationOpenedApp(remoteMessage => {
       console.log(remoteMessage);
+
+      if (onTap) {
+        onTap(remoteMessage);
+      }
     });
 
     messaging().setBackgroundMessageHandler(async remoteMessage => {
       console.log(remoteMessage);
     });
+
+    messaging()
+      .subscribeToTopic('karachipeople')
+      .then(() => {
+        console.log('Subscribed to topic!');
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   checkFCMPermission = async () => {

@@ -13,13 +13,35 @@ import {
   TestUseRef,
 } from '../containers';
 import {useSelector, useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import {Button} from 'react-native';
 import {userActions} from '../features/user/userSlice';
+import {NotificationHelper} from '../helpers';
 
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    NotificationHelper.initializeFCM(
+      remoteMessage => {
+        console.log(remoteMessage);
+
+        navigation.navigate('newHome');
+      },
+      remoteMessage => {
+        console.log(remoteMessage);
+
+        navigation.navigate('newHome');
+      },
+    );
+    NotificationHelper.checkFCMPermission();
+
+    NotificationHelper.getToken();
+    NotificationHelper.refreshToken();
+  }, []);
 
   const user = useSelector(state => state.user);
   const isUserLoggedIn =
