@@ -42,7 +42,13 @@ const ItemList = () => {
           return (
             <View style={styles.itemCell}>
               <View>
-                <Text>{item.name}</Text>
+                <Text
+                  style={{
+                    color: 'red',
+                    fontFamily: 'OpenSans-LightItalic',
+                  }}>
+                  {item.name}
+                </Text>
                 <Text>{item.details}</Text>
                 <Text>{item.price}</Text>
               </View>

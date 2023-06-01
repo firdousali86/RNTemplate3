@@ -57,6 +57,8 @@ const Navigation = () => {
   getHomeStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="itemList" component={ItemList} />
+        <Stack.Screen name="newHome" component={NewHome} />
         <Stack.Screen name="testSaga" component={TestSaga} />
         <Stack.Screen
           name="myOwnEntity"
@@ -73,11 +75,8 @@ const Navigation = () => {
           }}
         />
         <Stack.Screen name="testUseRef" component={TestUseRef} />
-        <Stack.Screen name="newHome" component={NewHome} />
 
         <Stack.Screen name="Home" component={HomeScreen} />
-
-        <Stack.Screen name="itemList" component={ItemList} />
 
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="expMemo" component={ExpMemo} />
@@ -103,7 +102,7 @@ const Navigation = () => {
     );
   };
 
-  return MyDrawer();
+  //return MyDrawer();
 
   // return isUserLoggedIn ? (
   //   MyDrawer()
@@ -111,11 +110,11 @@ const Navigation = () => {
   //   <Stack.Navigator>{getAuthStack()}</Stack.Navigator>
   // );
 
-  // return (
-  //   <Stack.Navigator>
-  //     {isUserLoggedIn ? MyDrawer() : getAuthStack()}
-  //   </Stack.Navigator>
-  // );
+  return (
+    <Stack.Navigator>
+      {!isUserLoggedIn ? getHomeStack() : getAuthStack()}
+    </Stack.Navigator>
+  );
 };
 
 export default Navigation;
