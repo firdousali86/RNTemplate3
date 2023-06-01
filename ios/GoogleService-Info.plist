@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1079418892084-s5fnua26glt89cqcme9hdfcdu090oj2v.apps.googleusercontent.com</string>
+	<string>1079418892084-2piaftrtqncdsbqkfjkus97cb3273mbr.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1079418892084-s5fnua26glt89cqcme9hdfcdu090oj2v</string>
+	<string>com.googleusercontent.apps.1079418892084-2piaftrtqncdsbqkfjkus97cb3273mbr</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBIKbmR2LQ7wWBZvXwlzsfK8kCfJZIkESY</string>
+	<string>AIzaSyAJDxsFpgPBV8wmed3IgzPPUzlYjz1lgJY</string>
 	<key>GCM_SENDER_ID</key>
 	<string>1079418892084</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.reactjs.native.example.RNTemplate3</string>
+	<string>com.rntemplate.thirdtemplate</string>
 	<key>PROJECT_ID</key>
 	<string>rntemplate3</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1079418892084:ios:804ed5ed13caf3765e3f61</string>
+	<string>1:1079418892084:ios:2bc7e30b7f4d356a5e3f61</string>
 </dict>
 </plist>
