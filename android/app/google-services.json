@@ -7,6 +7,45 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1079418892084:android:fb6ae83f6be65e865e3f61",
+        "android_client_info": {
+          "package_name": "com.rntemplate.thirdtemplate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079418892084-3rtno76sheq7gmbbk28g1o3b4p9pqogu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAat_QKNegVv3m5zChDgGxqIQjZokBuTMQ"
+        },
+        {
+          "current_key": "AIzaSyAjTzXCyb_M1LmNOsseVR3l9E5ruw6LzbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079418892084-3rtno76sheq7gmbbk28g1o3b4p9pqogu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1079418892084-2piaftrtqncdsbqkfjkus97cb3273mbr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rntemplate.thirdtemplate"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1079418892084:android:d49b5a71e45064d65e3f61",
         "android_client_info": {
           "package_name": "com.rntemplate3"
@@ -20,6 +59,9 @@
       ],
       "api_key": [
         {
+          "current_key": "AIzaSyAat_QKNegVv3m5zChDgGxqIQjZokBuTMQ"
+        },
+        {
           "current_key": "AIzaSyAjTzXCyb_M1LmNOsseVR3l9E5ruw6LzbI"
         }
       ],
@@ -31,10 +73,10 @@
               "client_type": 3
             },
             {
-              "client_id": "1079418892084-s5fnua26glt89cqcme9hdfcdu090oj2v.apps.googleusercontent.com",
+              "client_id": "1079418892084-2piaftrtqncdsbqkfjkus97cb3273mbr.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "org.reactjs.native.example.RNTemplate3"
+                "bundle_id": "com.rntemplate.thirdtemplate"
               }
             }
           ]

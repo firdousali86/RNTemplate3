@@ -1,4 +1,4 @@
-package com.rntemplate3;
+package com.rntemplate.thirdtemplate;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

@@ -1,4 +1,4 @@
-package com.rntemplate3;
+package com.rntemplate.thirdtemplate;
 
 import android.os.Bundle;
 
