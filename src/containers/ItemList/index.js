@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, TouchableOpacity, Text, FlatList} from 'react-native';
+import {View, TouchableOpacity, Text, FlatList, Platform} from 'react-native';
 import styles from './styles';
 import {cartActions} from '../../features/cart/cartSlice';
 import {useDispatch} from 'react-redux';
@@ -45,7 +45,10 @@ const ItemList = () => {
                 <Text
                   style={{
                     color: 'red',
-                    fontFamily: 'OpenSans-LightItalic',
+                    fontFamily:
+                      Platform.OS === 'android'
+                        ? 'OpenSans-LightItalic'
+                        : 'OpenSansLight-Italic',
                   }}>
                   {item.name}
                 </Text>
