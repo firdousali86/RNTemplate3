@@ -8,6 +8,7 @@ import MyOwnEntity from './MyOwnEntity';
 import SignupScreen from './SignupScreen';
 import TestUseRef from './TestUseRef';
 import TestSaga from './TestSaga';
+import LocaleTest from './LocaleTest';
 
 export {
   DetailsScreen,
@@ -20,4 +21,5 @@ export {
   SignupScreen,
   TestUseRef,
   TestSaga,
+  LocaleTest,
 };

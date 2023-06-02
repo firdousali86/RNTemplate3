@@ -1,7 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
 import {
   HomeScreen,
   DetailsScreen,
@@ -13,12 +18,14 @@ import {
   SignupScreen,
   TestUseRef,
   TestSaga,
+  LocaleTest,
 } from '../containers';
 import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
-import {Button} from 'react-native';
+import {useNavigation, DrawerActions} from '@react-navigation/native';
+import {Button, Text, View} from 'react-native';
 import {userActions} from '../features/user/userSlice';
-import {NotificationHelper} from '../helpers';
+import {NotificationHelper, LocalizationHelper} from '../helpers';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -57,6 +64,7 @@ const Navigation = () => {
   getHomeStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="localeTest" component={LocaleTest} />
         <Stack.Screen name="itemList" component={ItemList} />
         <Stack.Screen name="newHome" component={NewHome} />
         <Stack.Screen name="testSaga" component={TestSaga} />
@@ -93,9 +101,54 @@ const Navigation = () => {
     );
   };
 
+  function CustomDrawerContent(props) {
+    return (
+      <DrawerContentScrollView {...props}>
+        <DrawerItemList {...props} />
+        <DrawerItem
+          label="Help"
+          onPress={() => Linking.openURL('https://mywebsite.com/help')}
+        />
+        <View
+          style={{
+            flexDirection: 'row',
+            marginHorizontal: 20,
+            justifyContent: 'space-between',
+            marginTop: 50,
+          }}>
+          <TouchableOpacity
+            onPress={() => {
+              LocalizationHelper.locale = 'en';
+
+              navigation.dispatch(DrawerActions.closeDrawer());
+            }}>
+            <Text>EN</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              LocalizationHelper.locale = 'uk';
+              navigation.dispatch(DrawerActions.closeDrawer());
+            }}>
+            <Text>UK</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              LocalizationHelper.locale = 'ur';
+              navigation.dispatch(DrawerActions.closeDrawer());
+            }}>
+            <Text>UR</Text>
+          </TouchableOpacity>
+        </View>
+      </DrawerContentScrollView>
+    );
+  }
+
   MyDrawer = () => {
     return (
-      <Drawer.Navigator initialRouteName="TestSaga">
+      <Drawer.Navigator
+        initialRouteName="localeTest"
+        drawerContent={props => <CustomDrawerContent {...props} />}>
+        <Drawer.Screen name="localeTest" component={LocaleTest} />
         <Drawer.Screen name="TestSaga" component={TestSaga} />
         <Drawer.Screen name="TestUseRef" component={TestUseRef} />
       </Drawer.Navigator>
@@ -109,6 +162,8 @@ const Navigation = () => {
   // ) : (
   //   <Stack.Navigator>{getAuthStack()}</Stack.Navigator>
   // );
+
+  return MyDrawer();
 
   return (
     <Stack.Navigator>
