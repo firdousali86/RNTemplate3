@@ -5,6 +5,7 @@ import LocationHelper from './LocationHelper';
 import NotificationHelper from './NotificationHelper';
 import ApiHelper from './ApiHelper';
 import LocalizationHelper from './LocalizationHelper';
+import CryptoHelper from './CryptoHelper';
 
 export {
   AnalyticsHelper,
@@ -14,4 +15,5 @@ export {
   NotificationHelper,
   ApiHelper,
   LocalizationHelper,
+  CryptoHelper,
 };
