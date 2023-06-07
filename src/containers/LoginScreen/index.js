@@ -13,6 +13,7 @@ import {
 import {userActions} from '../../features/user/userSlice';
 import {AnalyticsHelper} from '../../helpers';
 import {kApiLogin} from '../../config/WebServices';
+import {LoginButton, AccessToken} from 'react-native-fbsdk-next';
 
 const {request, clear} = userActions;
 
@@ -77,6 +78,24 @@ const LoginScreen = props => {
         }}>
         <Text>Signup</Text>
       </TouchableOpacity>
+
+      <LoginButton
+        onLoginFinished={(error, result) => {
+          if (error) {
+            console.log('login has error: ' + result.error);
+          } else if (result.isCancelled) {
+            console.log('login is cancelled.');
+          } else {
+            AccessToken.getCurrentAccessToken().then(data => {
+              console.log(data.accessToken.toString());
+            });
+          }
+        }}
+        onLogoutFinished={() => {
+          console.log('logout.');
+        }}
+      />
+
       <ActivityIndicator
         animating={user.isFetching}
         hidesWhenStopped

@@ -163,11 +163,11 @@ const Navigation = () => {
   //   <Stack.Navigator>{getAuthStack()}</Stack.Navigator>
   // );
 
-  return MyDrawer();
+  // return MyDrawer();
 
   return (
     <Stack.Navigator>
-      {!isUserLoggedIn ? getHomeStack() : getAuthStack()}
+      {isUserLoggedIn ? getHomeStack() : getAuthStack()}
     </Stack.Navigator>
   );
 };
