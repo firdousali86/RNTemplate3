@@ -22,7 +22,7 @@ import {
 } from '../containers';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, DrawerActions} from '@react-navigation/native';
-import {Button, Text, View} from 'react-native';
+import {Button, Text, View, Linking} from 'react-native';
 import {userActions} from '../features/user/userSlice';
 import {NotificationHelper, LocalizationHelper, CryptoHelper} from '../helpers';
 import {TouchableOpacity} from 'react-native-gesture-handler';
