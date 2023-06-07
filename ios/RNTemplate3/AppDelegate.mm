@@ -8,17 +8,22 @@
 #import <AppCenterReactNativeAnalytics.h>
 #import <AppCenterReactNativeCrashes.h>
 
+#import <FBSDKCoreKit/FBSDKCoreKit-swift.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
-  for (NSString *familyName in [UIFont familyNames]){
-      NSLog(@"Family name: %@", familyName);
-      for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
-          NSLog(@"--Font name: %@", fontName);
-      }
-  }
+//  for (NSString *familyName in [UIFont familyNames]){
+//      NSLog(@"Family name: %@", familyName);
+//      for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
+//          NSLog(@"--Font name: %@", fontName);
+//      }
+//  }
+  
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                         didFinishLaunchingWithOptions:launchOptions];
   
   [AppCenterReactNative register];
 [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
@@ -52,6 +57,15 @@
 - (BOOL)concurrentRootEnabled
 {
   return true;
+}
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+  return [[FBSDKApplicationDelegate sharedInstance]application:app
+                                                      openURL:url
+                                                      options:options];
 }
 
 @end

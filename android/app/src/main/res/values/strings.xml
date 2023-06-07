@@ -2,4 +2,6 @@
     <string name="app_name">RNTemplate3</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <string name="facebook_app_id">213113124953110</string>
+    <string name="facebook_client_token">215f521f4e379101756218a0ae245b68</string>
 </resources>

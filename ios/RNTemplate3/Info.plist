@@ -16,6 +16,21 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb213113124953110</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>213113124953110</string>
+<key>FacebookClientToken</key>
+<string>215f521f4e379101756218a0ae245b68</string>
+<key>FacebookDisplayName</key>
+<string>TestOAuth</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
@@ -35,6 +50,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>fbapi</string>
+</array>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>YOUR TEXT</string>
 	<key>NSLocationAlwaysUsageDescription</key>

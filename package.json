@@ -30,6 +30,7 @@
     "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-native": "0.71.7",
+    "react-native-fbsdk-next": "^11.2.1",
     "react-native-geolocation-service": "5.2.0",
     "react-native-gesture-handler": "^2.10.1",
     "react-native-keychain": "^8.1.1",
