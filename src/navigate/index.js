@@ -19,6 +19,7 @@ import {
   TestUseRef,
   TestSaga,
   LocaleTest,
+  FavoriteCarScreen,
 } from '../containers';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, DrawerActions} from '@react-navigation/native';
@@ -64,9 +65,12 @@ const Navigation = () => {
   getHomeStack = () => {
     return (
       <Stack.Group>
+        <Stack.Screen name="newHome" component={NewHome} />
+        <Stack.Screen name="favoriteCarScreen" component={FavoriteCarScreen} />
+
         <Stack.Screen name="localeTest" component={LocaleTest} />
         <Stack.Screen name="itemList" component={ItemList} />
-        <Stack.Screen name="newHome" component={NewHome} />
+
         <Stack.Screen name="testSaga" component={TestSaga} />
         <Stack.Screen
           name="myOwnEntity"
@@ -167,7 +171,7 @@ const Navigation = () => {
 
   return (
     <Stack.Navigator>
-      {isUserLoggedIn ? getHomeStack() : getAuthStack()}
+      {!isUserLoggedIn ? getHomeStack() : getAuthStack()}
     </Stack.Navigator>
   );
 };

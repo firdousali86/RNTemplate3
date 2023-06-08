@@ -9,6 +9,7 @@ import SignupScreen from './SignupScreen';
 import TestUseRef from './TestUseRef';
 import TestSaga from './TestSaga';
 import LocaleTest from './LocaleTest';
+import FavoriteCarScreen from './FavoriteCarScreen';
 
 export {
   DetailsScreen,
@@ -22,4 +23,5 @@ export {
   TestUseRef,
   TestSaga,
   LocaleTest,
+  FavoriteCarScreen,
 };

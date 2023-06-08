@@ -4,8 +4,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {carActions} from '../../features/car/carSlice';
 import {authActions} from '../../features/auth/authSlice';
 import {PersistanceHelper, AnalyticsHelper} from '../../helpers';
+import {CommonCarCell} from '../../components';
 
-const NewHome = () => {
+const NewHome = props => {
   useEffect(() => {
     AnalyticsHelper.logTest();
 
@@ -96,47 +97,40 @@ const NewHome = () => {
     );
   };
 
-  const renderListItem = ({item, index}) => {
+  const renderCarItem = ({item, index}) => {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          marginHorizontal: 10,
-          alignItems: 'center',
-        }}>
-        <View
-          style={{
-            height: 80,
-            justifyContent: 'center',
-          }}>
-          <Text>{item.brand}</Text>
-          <Text>{item.name}</Text>
-          <Text>{item.model}</Text>
-        </View>
-        <TouchableOpacity
-          onPress={() => {
-            dispatch(
-              carActions.deleteCar({
-                brand: item.brand,
-                name: item.name,
-                model: item.model,
-              }),
-            );
-          }}>
-          <Text>Delete</Text>
-        </TouchableOpacity>
-      </View>
+      <CommonCarCell
+        item={item}
+        index={index}
+        onCarCellPress={() => {
+          dispatch(
+            carActions.deleteCar({
+              brand: item.brand,
+              name: item.name,
+              model: item.model,
+            }),
+          );
+        }}
+      />
     );
   };
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{flex: 1}}>
       {renderCarForm()}
       <View style={{flex: 1}}>
-        <FlatList data={car.carCollection} renderItem={renderListItem} />
+        <FlatList data={car.carCollection} renderItem={renderCarItem} />
       </View>
 
+      <TouchableOpacity
+        style={{marginBottom: 50}}
+        onPress={() => {
+          props.navigation.navigate('favoriteCarScreen', {
+            carData: car.carCollection,
+          });
+        }}>
+        <Text>Favorite screen</Text>
+      </TouchableOpacity>
       <TouchableOpacity
         style={{marginBottom: 50}}
         onPress={() => {
