@@ -1,10 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, TouchableOpacity, TextInput, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  FlatList,
+  NativeModules,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {carActions} from '../../features/car/carSlice';
 import {authActions} from '../../features/auth/authSlice';
 import {PersistanceHelper, AnalyticsHelper} from '../../helpers';
 import {CommonCarCell} from '../../components';
+
+const {CalendarModule} = NativeModules;
 
 const NewHome = props => {
   useEffect(() => {
@@ -125,9 +134,10 @@ const NewHome = props => {
       <TouchableOpacity
         style={{marginBottom: 50}}
         onPress={() => {
-          props.navigation.navigate('favoriteCarScreen', {
-            carData: car.carCollection,
-          });
+          // props.navigation.navigate('favoriteCarScreen', {
+          //   carData: car.carCollection,
+          // });
+          CalendarModule.createCalendarEvent('testName', 'testLocation');
         }}>
         <Text>Favorite screen</Text>
       </TouchableOpacity>
