@@ -14,6 +14,7 @@ import {userActions} from '../../features/user/userSlice';
 import {AnalyticsHelper} from '../../helpers';
 import {kApiLogin} from '../../config/WebServices';
 import {LoginButton, AccessToken} from 'react-native-fbsdk-next';
+import auth from '@react-native-firebase/auth';
 
 const {request, clear} = userActions;
 
@@ -29,6 +30,12 @@ const LoginScreen = props => {
 
   useEffect(() => {
     dispatch(clear());
+
+    const subscriber = auth().onAuthStateChanged(user => {
+      console.log(user);
+    });
+
+    return subscriber;
   }, []);
 
   return (
@@ -77,6 +84,61 @@ const LoginScreen = props => {
           props.navigation.navigate('signupScreen');
         }}>
         <Text>Signup</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{marginHorizontal: 15, marginTop: 10}}
+        onPress={() => {
+          auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(() => {
+              console.log('User account created & signed in!');
+            })
+            .catch(error => {
+              if (error.code === 'auth/email-already-in-use') {
+                console.log('That email address is already in use!');
+              }
+
+              if (error.code === 'auth/invalid-email') {
+                console.log('That email address is invalid!');
+              }
+
+              console.error(error);
+            });
+        }}>
+        <Text>Firebase Register</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{marginHorizontal: 15, marginTop: 10}}
+        onPress={() => {
+          auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(() => {
+              console.log('User account created & signed in!');
+            })
+            .catch(error => {
+              if (error.code === 'auth/email-already-in-use') {
+                console.log('That email address is already in use!');
+              }
+
+              if (error.code === 'auth/invalid-email') {
+                console.log('That email address is invalid!');
+              }
+
+              console.error(error);
+            });
+        }}>
+        <Text>Firebase Login</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => {
+          auth()
+            .signOut()
+            .then(() => console.log('User signed out!'));
+        }}>
+        <Text>Logout</Text>
       </TouchableOpacity>
 
       <LoginButton
