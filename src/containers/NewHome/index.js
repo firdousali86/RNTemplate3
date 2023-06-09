@@ -12,11 +12,14 @@ import {carActions} from '../../features/car/carSlice';
 import {authActions} from '../../features/auth/authSlice';
 import {PersistanceHelper, AnalyticsHelper} from '../../helpers';
 import {CommonCarCell} from '../../components';
+import firestore from '@react-native-firebase/firestore';
 
 const {CalendarModule} = NativeModules;
 
 const NewHome = props => {
   useEffect(() => {
+    fetchCars();
+
     AnalyticsHelper.logTest();
 
     PersistanceHelper.setter(
@@ -60,6 +63,12 @@ const NewHome = props => {
 
   const car = useSelector(state => state.car);
 
+  const fetchCars = async () => {
+    const cars = await firestore().collection('car').get();
+
+    console.log(cars);
+  };
+
   const renderCarForm = () => {
     return (
       <>
@@ -86,6 +95,17 @@ const NewHome = props => {
         />
         <TouchableOpacity
           onPress={() => {
+            firestore()
+              .collection('car')
+              .add({
+                brand: carBrand,
+                name: carName,
+                model: carModel,
+              })
+              .then(() => {
+                console.log('Item added!');
+              });
+
             if (carBrand && carName && carModel) {
               dispatch(
                 carActions.addNewCar({
