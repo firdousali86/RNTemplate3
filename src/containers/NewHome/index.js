@@ -13,8 +13,11 @@ import {authActions} from '../../features/auth/authSlice';
 import {PersistanceHelper, AnalyticsHelper} from '../../helpers';
 import {CommonCarCell} from '../../components';
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 
 const {CalendarModule} = NativeModules;
+
+let timerInst;
 
 const NewHome = props => {
   useEffect(() => {
@@ -67,6 +70,13 @@ const NewHome = props => {
     const cars = await firestore().collection('car').get();
 
     console.log(cars);
+  };
+
+  const startTimer = () => {
+    timerInst = setInterval(() => {
+      console.log('running');
+      console.log('===========');
+    }, 2000);
   };
 
   const renderCarForm = () => {
@@ -167,6 +177,22 @@ const NewHome = props => {
           dispatch(authActions.onLogout());
         }}>
         <Text>Logout</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{marginBottom: 50}}
+        onPress={() => {
+          startTimer();
+        }}>
+        <Text>Start timer</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{marginBottom: 50}}
+        onPress={() => {
+          clearInterval(timerInst);
+        }}>
+        <Text>Stop timer</Text>
       </TouchableOpacity>
     </View>
   );
